@@ -1,0 +1,67 @@
+.input-bar {
+    margin: 10px;
+}
+
+.main-div {
+    width: 80%;
+    margin: 20px;
+}
+
+.header {
+    width: 100%;
+    background: b
+}
+
+.task-diplay {
+    border-color: black;
+    border-style: solid;
+    background: lightgray;
+}
+
+.task {
+    margin: 15px;
+}
+
+.navbar {
+    background: darkgray;
+}
+
+.completeButtontrue {
+    display: none;
+}
+
+.dropbtn {
+  padding: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content folder {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content folder:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: grey}
+
+.folder button {
+    width: 100%;
+}

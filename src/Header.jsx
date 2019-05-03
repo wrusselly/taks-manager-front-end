@@ -10,7 +10,7 @@ export default class Header extends Component {
 
     render() {
         return (
-            <div id="header">
+            <div className="header">
                <h1>To Do Project</h1>
                <button>sign out</button>
             </div>

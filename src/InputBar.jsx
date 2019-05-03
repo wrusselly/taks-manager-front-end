@@ -39,22 +39,23 @@ export default class InputBar extends Component {
         request.open('POST', url);
         request.setRequestHeader("Content-Type", "application/json");
         request.responseType = "json";
-        // "200" == 200   //TRUE
-        // "200" === 200 // FALSE
-        // "200" === "200" //TRUE
-        // 200 === 200  // TRHE
         request.onload = () => {
             console.log(request.response);
+            console.log(this.props.userId);
             if(request.status === 200) {
             this.props.addTaskFunction(request.response);
             this.setState({
-                text: ""
+                text: "",
+                dueDate: ""
             });
             }
         }
         let bod = {};
         bod.text = this.state.text;
-        bod = JSON.stringify(bod)
+        bod.dateDueStr = this.state.dueDate;
+        bod.userId = this.props.userId;
+        bod.folderId = this.props.folderId;
+        bod = JSON.stringify(bod);
         request.send(bod);
     }
 
