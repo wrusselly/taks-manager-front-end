@@ -45,7 +45,6 @@ export default class NavBar extends Component {
     }
 
     componentDidMount = () => {
-        console.log("initial load")
         this.getFolderList();
     }
 
@@ -97,6 +96,7 @@ export default class NavBar extends Component {
         this.setState({
             listHeader: "To do"
         });
+        this.props.setFolderId(0)
     }
 
     completeClick = (userId) => {
@@ -104,6 +104,7 @@ export default class NavBar extends Component {
         this.setState({
             listHeader: "Completed"
         });
+        this.props.setFolderId(0)
     }
 
 }

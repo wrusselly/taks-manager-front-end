@@ -12,16 +12,16 @@ class App extends Component {
     this.state = {
       taskList: [],
       userId: 0,
-      folderId: 1
+      folderId: 0
     }
   }
 
   render() {
     let mainPage =
       <div className="main-div">
-        <Header setUserId={this.setUserId}/>
+        <Header setUserId={this.setUserId} setTaskList={this.setTaskList}/>
         <Navbar getByUserAndComplete={this.getByUserAndComplete} getByUserAndList={this.getByUserAndList}
-          userId={this.state.userId} folderId={this.state.folderId} />
+          userId={this.state.userId} folderId={this.state.folderId} setFolderId={this.setFolderId}/>
         <InputBar addTaskFunction={this.addTask} userId={this.state.userId} folderId={this.state.folderId} />
         <TaskDisplay taskArr={this.state.taskList} removeTask={this.removeTask}
           completeArr={this.state.completedList} addCompleted={this.addCompleted} />
@@ -64,21 +64,11 @@ class App extends Component {
     request.send();
   }
 
-
-  update = () => {
-    this.forceUpdate();
-  }
-
-
-  componentDidMount = () => {
-    this.getByUserAndComplete(this.state.userId, false);
-  }
-
   addTask = (task) => {
     let array = this.state.taskList;
     array.unshift(task);
     this.setState({
-      taskList: array
+      taskList: array.reverse()
     });
   }
 
@@ -86,7 +76,7 @@ class App extends Component {
     let array = this.state.taskList;
     array.splice(index, 1);
     this.setState({
-      taskList: array
+      taskList: array.reverse()
     });
   }
 
@@ -99,6 +89,12 @@ class App extends Component {
   setFolderId = (id) => {
     this.setState({
       folderId: id
+    });
+  }
+
+  setTaskList = (array) => {
+    this.setState({
+      taskList: array
     });
   }
 

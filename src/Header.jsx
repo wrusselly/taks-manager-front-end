@@ -12,8 +12,13 @@ export default class Header extends Component {
         return (
             <div className="header">
                <h1>To Do Project</h1>
-               <button onClick={() => {this.props.setUserId(0)}}>sign out</button>
+               <button onClick={() => {this.signout()}}>sign out</button>
             </div>
         );
+    }
+
+    signout= () => {
+        this.props.setUserId(0);
+        this.props.setTaskList([]);
     }
 }

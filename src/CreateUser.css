@@ -1,0 +1,17 @@
+.centre {
+    display: block;
+    margin: 0 auto;
+    margin-top: 30px;
+
+}
+
+.inputs {
+    padding: 20px;
+    background: grey;
+    width: 30%;
+}
+
+.inputs p {
+    text-align: center;
+    color: red;
+}
