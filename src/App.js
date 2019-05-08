@@ -3,6 +3,7 @@ import InputBar from './InputBar';
 import TaskDisplay from './TaskDisplay';
 import Navbar from './Navbar';
 import Header from './Header';
+import Login from './Login'
 import './main.css'
 
 class App extends Component {
@@ -10,29 +11,38 @@ class App extends Component {
     super(props);
     this.state = {
       taskList: [],
-      userId: 1,
+      userId: 0,
       folderId: 1
     }
   }
 
   render() {
-    return (
+    let mainPage =
       <div className="main-div">
-        <Header />
-        <Navbar getByUserAndComplete={this.getByUserAndComplete} setFolderId={this.setFolderId} getByUserAndList={this.getByUserAndList} userId={this.state.userId} folderId={this.state.folderId}/>
-        <InputBar addTaskFunction={this.addTask} userId={this.state.userId} folderId={this.state.folderId}/>
-          <TaskDisplay taskArr={this.state.taskList} removeTask={this.removeTask} completeArr={this.state.completedList} addCompleted={this.addCompleted}/>  
+        <Header setUserId={this.setUserId}/>
+        <Navbar getByUserAndComplete={this.getByUserAndComplete} getByUserAndList={this.getByUserAndList}
+          userId={this.state.userId} folderId={this.state.folderId} />
+        <InputBar addTaskFunction={this.addTask} userId={this.state.userId} folderId={this.state.folderId} />
+        <TaskDisplay taskArr={this.state.taskList} removeTask={this.removeTask}
+          completeArr={this.state.completedList} addCompleted={this.addCompleted} />
+      </div>
+
+      let loginPage = <Login setUserId={this.setUserId}/>
+
+
+    return (
+      <div>
+      {(this.state.userId === 0 ? loginPage : mainPage)}
       </div>
     );
   }
 
   getByUserAndComplete = (userId, status) => {
-    let url = 'http://localhost:9090/task-tracker/task/'+userId+'/'+status;
+    let url = 'http://localhost:9090/task-tracker/task/' + userId + '/' + status;
     let request = new XMLHttpRequest();
     request.open('GET', url);
     request.responseType = "json";
     request.onload = () => {
-      console.log(request.response);
       this.setState({
         taskList: request.response
       });
@@ -41,19 +51,19 @@ class App extends Component {
   }
 
   getByUserAndList = (userId, folderId, complete) => {
-    let url = 'http://localhost:9090/task-tracker/task/'+userId+'/'+folderId+'/'+complete;
+    let url = 'http://localhost:9090/task-tracker/task/' + userId + '/' + folderId + '/' + complete;
     let request = new XMLHttpRequest();
     request.open('GET', url);
     request.responseType = "json";
     request.onload = () => {
-      console.log(request.response);
       this.setState({
         taskList: request.response
       });
+      this.setFolderId(folderId);
     }
     request.send();
   }
-  
+
 
   update = () => {
     this.forceUpdate();
@@ -61,13 +71,10 @@ class App extends Component {
 
 
   componentDidMount = () => {
-    // get info logic
-    console.log("initial load")
     this.getByUserAndComplete(this.state.userId, false);
   }
 
   addTask = (task) => {
-    console.log("adding a task")
     let array = this.state.taskList;
     array.unshift(task);
     this.setState({

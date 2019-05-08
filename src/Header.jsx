@@ -12,7 +12,7 @@ export default class Header extends Component {
         return (
             <div className="header">
                <h1>To Do Project</h1>
-               <button>sign out</button>
+               <button onClick={() => {this.props.setUserId(0)}}>sign out</button>
             </div>
         );
     }

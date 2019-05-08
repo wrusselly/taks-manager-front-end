@@ -12,7 +12,7 @@ export default class Task extends Component {
     render() {
         return (
             <div className="task" id={this.props.id}>
-                <h4>{this.props.taskText}</h4>
+                <h4>- {this.props.taskText}</h4>
                 <p> due: {this.props.dueDate}</p>
                 <button onClick={()=>{this.completed(this.props.id, this.props.index, this.props.taskText, this.props.dueDate)}} 
                     className={"completeButton"+this.props.complete}>complete</button>
@@ -28,8 +28,6 @@ export default class Task extends Component {
         request.setRequestHeader("Content-Type", "application/json");
         request.responseType = "json";
         request.onload = () => {
-            console.log("i'm deleting");
-            console.log(request.response);
             if(request.status === 200) {
             this.props.removeTask(frontIndex);
             }
@@ -45,8 +43,6 @@ export default class Task extends Component {
         request.responseType = "json";
         request.onload = () => {
             if(request.status === 200) {
-                console.log(request.response);
-                console.log("task completed");
                 this.props.removeTask(frontIndex);
             }
         }

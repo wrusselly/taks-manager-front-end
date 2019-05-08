@@ -40,8 +40,6 @@ export default class InputBar extends Component {
         request.setRequestHeader("Content-Type", "application/json");
         request.responseType = "json";
         request.onload = () => {
-            console.log(request.response);
-            console.log(this.props.userId);
             if(request.status === 200) {
             this.props.addTaskFunction(request.response);
             this.setState({

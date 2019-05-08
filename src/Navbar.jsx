@@ -6,35 +6,37 @@ export default class NavBar extends Component {
         super(props);
         this.state = {
             folderList: [],
-            nameText: ""
+            nameText: "",
+            listHeader: ""
         }
     }
 
     render() {
         return (
             <div className="navbar">
-                <button onClick={() => { this.props.getByUserAndComplete(this.props.userId, false) }}>To Do</button>
-                <button onClick={() => { this.props.getByUserAndComplete(this.props.userId, true) }}>completed</button>
+                <button onClick={() => { this.toDoClick(this.props.userId) }}>To Do</button>
+                <button onClick={() => { this.completeClick(this.props.userId) }}>completed</button>
                 <div className="dropdown">
                     <button className="dropbtn">lists</button>
                     <div className="dropdown-content">
-                        {this.state.folderList.map((folder, i) => <Folder key={"folder" + i} folderName={folder.name} id={folder.folderId} 
-                        getByUserAndList={this.props.getByUserAndList} userId={folder.userId}/>)}
-                         <input type="text"  placeholder="new list" required />
-                         <button > + </button>
+                        {this.state.folderList.map((folder, i) => <Folder key={"folder" + i} folderName={folder.name} id={folder.folderId} setList={this.setListHeader}
+                        getByUserAndList={this.props.getByUserAndList} userId={folder.userId} index={i} removeFolder={this.removeFolder}/>)}
+                         <input type="text"  placeholder="new list" required onChange={this.textUpdate} value={this.state.nameText}/>
+                         <button onClick={this.postFolder}> + </button>
                     </div>
                 </div>
+
+                <h3 id="listHeading" >List: {this.state.listHeader}</h3>
             </div>
         );
     }
 
     getFolderList = () => {
-        let url = 'http://localhost:9090/task-tracker/folder';
+        let url = 'http://localhost:9090/task-tracker/folder//' + this.props.userId;
         let request = new XMLHttpRequest();
         request.open('GET', url);
         request.responseType = "json";
         request.onload = () => {
-            console.log(request.response);
             this.setState({
                 folderList: request.response
             });
@@ -58,7 +60,8 @@ export default class NavBar extends Component {
                 let array = this.state.folderList;
                 array.push(request.response);
                 this.setState({
-                    folderList: array
+                    folderList: array,
+                    nameText: ""
                 });
             }
         }
@@ -67,6 +70,40 @@ export default class NavBar extends Component {
         bod.name = this.state.nameText;
         bod = JSON.stringify(bod);
         request.send(bod);
+    }
+
+    textUpdate = (folder) => {
+        this.setState({
+            nameText: folder.target.value
+        });
+    }
+
+    removeFolder = (index) => {
+        let array = this.state.folderList;
+        array.splice(index, 1);
+        this.setState({
+            folderList: array
+        });
+    } 
+
+    setListHeader = (name) => {
+        this.setState({
+            listHeader: name
+        });
+    }
+
+    toDoClick = (userId) => {
+        this.props.getByUserAndComplete(userId, false)
+        this.setState({
+            listHeader: "To do"
+        });
+    }
+
+    completeClick = (userId) => {
+        this.props.getByUserAndComplete(userId, true)
+        this.setState({
+            listHeader: "Completed"
+        });
     }
 
 }

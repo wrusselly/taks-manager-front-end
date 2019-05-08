@@ -30,22 +30,12 @@
     display: none;
 }
 
-.dropbtn {
-  padding: 16px;
-  border: none;
-}
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
 .dropdown-content {
   display: none;
-  position: absolute;
+   position: absolute; 
   background-color: #f1f1f1;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
   z-index: 1;
 }
 
@@ -56,12 +46,24 @@
   display: block;
 }
 
+.dropdown-content input {
+    width: 80%;
+}
+
 .dropdown-content folder:hover {background-color: #ddd;}
 
 .dropdown:hover .dropdown-content {display: block;}
 
 .dropdown:hover .dropbtn {background-color: grey}
 
-.folder button {
-    width: 100%;
+.folderButton {
+    width: 80%;
+}
+
+.folderDelete {
+    background: #cc0000;
+}
+
+#listHeading {
+    float: left;
 }
