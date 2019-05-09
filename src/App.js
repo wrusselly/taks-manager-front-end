@@ -3,8 +3,9 @@ import InputBar from './InputBar';
 import TaskDisplay from './TaskDisplay';
 import Navbar from './Navbar';
 import Header from './Header';
-import Login from './Login'
-import './main.css'
+import Login from './Login';
+import './main.css';
+import { BACKEND_IP } from './endpoint-config';
 
 class App extends Component {
   constructor(props) {
@@ -38,7 +39,7 @@ class App extends Component {
   }
 
   getByUserAndComplete = (userId, status) => {
-    let url = 'http://localhost:9090/task-tracker/task/' + userId + '/' + status;
+    let url = `http://${BACKEND_IP}:9090/task-tracker/task/` + userId + '/' + status;
     let request = new XMLHttpRequest();
     request.open('GET', url);
     request.responseType = "json";
@@ -51,7 +52,7 @@ class App extends Component {
   }
 
   getByUserAndList = (userId, folderId, complete) => {
-    let url = 'http://localhost:9090/task-tracker/task/' + userId + '/' + folderId + '/' + complete;
+    let url = `http://${BACKEND_IP}:9090/task-tracker/task/` + userId + '/' + folderId + '/' + complete;
     let request = new XMLHttpRequest();
     request.open('GET', url);
     request.responseType = "json";

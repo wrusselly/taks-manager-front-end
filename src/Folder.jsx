@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BACKEND_IP } from './endpoint-config';
 
 export default class Folder extends Component {
     constructor(props){
@@ -18,7 +19,7 @@ export default class Folder extends Component {
     }
 
     deleteFolder = (backId, frontIndex) => {
-        let url = 'http://localhost:9090/task-tracker/folder/' + backId;
+        let url = `http://${BACKEND_IP}:9090/task-tracker/folder/` + backId;
         let request = new XMLHttpRequest();
         request.open('DELETE', url);
         request.setRequestHeader("Content-Type", "application/json");

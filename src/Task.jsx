@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './main.css'
+import './main.css';
+import { BACKEND_IP } from './endpoint-config';
 
 export default class Task extends Component {
     constructor(props) {
@@ -22,7 +23,7 @@ export default class Task extends Component {
     }
 
     deleteTask = (backId, frontIndex) => {
-        let url = 'http://localhost:9090/task-tracker/task/' + backId;
+        let url = `http://${BACKEND_IP}:9090/task-tracker/task/` + backId;
         let request = new XMLHttpRequest();
         request.open('DELETE', url);
         request.setRequestHeader("Content-Type", "application/json");
@@ -36,7 +37,7 @@ export default class Task extends Component {
     }
 
     completed = (backId, frontIndex, text, date) => {
-        let url = 'http://localhost:9090/task-tracker/task/' + backId;
+        let url = `http://${BACKEND_IP}:9090/task-tracker/task/` + backId;
         let request = new XMLHttpRequest();
         request.open('PUT', url);
         request.setRequestHeader("Content-Type", "application/json");

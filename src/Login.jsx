@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CreateUser from './CreateUser';
-import './Login.css'
+import './Login.css';
+import { BACKEND_IP } from './endpoint-config';
 
 export default class Login extends Component {
     constructor(props) {
@@ -40,7 +41,7 @@ export default class Login extends Component {
     }
 
     getByUsernameAndPassword = (username, password) => {
-        let url = 'http://localhost:9090/task-tracker/users/' + username + '/' + password + '/only';
+        let url = `http://${BACKEND_IP}/task-tracker/users/` + username + '/' + password + '/only';
         let request = new XMLHttpRequest();
         request.open('GET', url);
         request.responseType = "json";

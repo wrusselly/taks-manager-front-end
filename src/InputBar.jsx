@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BACKEND_IP } from './endpoint-config';
 
 export default class InputBar extends Component {
     constructor(props) {
@@ -34,7 +35,7 @@ export default class InputBar extends Component {
     }
 
     sendToParent  = () => {
-        let url = 'http://localhost:9090/task-tracker/task';
+        let url = `http://${BACKEND_IP}:9090/task-tracker/task`;
         let request = new XMLHttpRequest();
         request.open('POST', url);
         request.setRequestHeader("Content-Type", "application/json");

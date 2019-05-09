@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Folder from './Folder.jsx';
-import './Navbar.css'
+import './Navbar.css';
+import { BACKEND_IP } from './endpoint-config';
 
 export default class NavBar extends Component {
     constructor(props) {
@@ -35,7 +36,7 @@ export default class NavBar extends Component {
     }
 
     getFolderList = () => {
-        let url = 'http://localhost:9090/task-tracker/folder//' + this.props.userId;
+        let url = `http://${BACKEND_IP}:9090/task-tracker/folder//` + this.props.userId;
         let request = new XMLHttpRequest();
         request.open('GET', url);
         request.responseType = "json";
@@ -52,7 +53,7 @@ export default class NavBar extends Component {
     }
 
     postFolder = () => {
-        let url = 'http://localhost:9090/task-tracker/folder';
+        let url = `http://${BACKEND_IP}:9090/task-tracker/folder`;
         let request = new XMLHttpRequest();
         request.open('POST', url);
         request.setRequestHeader("Content-Type", "application/json");
