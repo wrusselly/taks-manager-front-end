@@ -1,0 +1,11 @@
+.header button {
+    background: firebrick;
+    color: white;
+    position: fixed;
+    top: 35px;
+    right: 30px;
+}
+
+.header {
+    margin-bottom: 30px;
+}

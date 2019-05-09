@@ -9,11 +9,16 @@
     padding: 20px;
     background: grey;
     width: 30%;
+    margin-top: 20%;
 }
 
 .inputs p {
     text-align: center;
     color: red;
+}
+
+.inputs input {
+    width: 80%;
 }
 
 

@@ -1,0 +1,14 @@
+.task-diplay {
+    
+}
+
+.task {
+    margin: 15px;
+    border-color: black;
+    border-style: solid;
+    background: lightgray;
+}
+
+.completeButtontrue {
+    display: none;
+}

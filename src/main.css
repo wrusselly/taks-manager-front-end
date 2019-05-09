@@ -3,8 +3,10 @@
 }
 
 .main-div {
-    width: 80%;
-    margin: 20px;
+    display: block;
+    margin: 0 auto;
+    width: 90%;
+    margin-top: 20px;
 }
 
 .header {
@@ -12,58 +14,3 @@
     background: b
 }
 
-.task-diplay {
-    border-color: black;
-    border-style: solid;
-    background: lightgray;
-}
-
-.task {
-    margin: 15px;
-}
-
-.navbar {
-    background: darkgray;
-}
-
-.completeButtontrue {
-    display: none;
-}
-
-.dropdown-content {
-  display: none;
-   position: absolute; 
-  background-color: #f1f1f1;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
-  z-index: 1;
-}
-
-.dropdown-content folder {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown-content input {
-    width: 80%;
-}
-
-.dropdown-content folder:hover {background-color: #ddd;}
-
-.dropdown:hover .dropdown-content {display: block;}
-
-.dropdown:hover .dropbtn {background-color: grey}
-
-.folderButton {
-    width: 80%;
-}
-
-.folderDelete {
-    background: #cc0000;
-}
-
-#listHeading {
-    float: left;
-}

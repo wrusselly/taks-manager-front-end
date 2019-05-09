@@ -34,8 +34,8 @@ export default class Folder extends Component {
     folderClick = (userId, folderId, name) => {
         this.props.getByUserAndList(userId, folderId, false);
         this.props.setList(name);
+        document.getElementById("taskTextInput").disabled = false;
+        document.getElementById("dateInput").disabled = false;
     }
-
-    // this.props.getByUserAndList(this.props.userId, this.props.id, false)
 
 }

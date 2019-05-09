@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Folder from './Folder.jsx';
+import './Navbar.css'
 
 export default class NavBar extends Component {
     constructor(props) {
@@ -13,11 +14,12 @@ export default class NavBar extends Component {
 
     render() {
         return (
+            <div id="wholeNav">
             <div className="navbar">
-                <button onClick={() => { this.toDoClick(this.props.userId) }}>To Do</button>
-                <button onClick={() => { this.completeClick(this.props.userId) }}>completed</button>
+                <button className="navBtn" onClick={() => { this.toDoClick(this.props.userId) }}>To Do</button>
+                <button className="navBtn" onClick={() => { this.completeClick(this.props.userId) }}>completed</button>
                 <div className="dropdown">
-                    <button className="dropbtn">lists</button>
+                    <button className="dropbtn navBtn">lists</button>
                     <div className="dropdown-content">
                         {this.state.folderList.map((folder, i) => <Folder key={"folder" + i} folderName={folder.name} id={folder.folderId} setList={this.setListHeader}
                         getByUserAndList={this.props.getByUserAndList} userId={folder.userId} index={i} removeFolder={this.removeFolder}/>)}
@@ -25,8 +27,9 @@ export default class NavBar extends Component {
                          <button onClick={this.postFolder}> + </button>
                     </div>
                 </div>
-
-                <h3 id="listHeading" >List: {this.state.listHeader}</h3>
+                
+            </div>
+            <h3 id="listHeading" >List: {this.state.listHeader}</h3>
             </div>
         );
     }
@@ -97,6 +100,8 @@ export default class NavBar extends Component {
             listHeader: "To do"
         });
         this.props.setFolderId(0)
+        document.getElementById("taskTextInput").disabled = false;
+        document.getElementById("dateInput").disabled = false;
     }
 
     completeClick = (userId) => {
@@ -105,6 +110,8 @@ export default class NavBar extends Component {
             listHeader: "Completed"
         });
         this.props.setFolderId(0)
+        document.getElementById("taskTextInput").disabled = true;
+        document.getElementById("dateInput").disabled = true;
     }
 
 }

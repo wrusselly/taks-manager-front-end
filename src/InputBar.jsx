@@ -12,9 +12,9 @@ export default class InputBar extends Component {
     render() {
         return (
             <div className="input-bar">
-                <input type="text" onChange={this.textUpdate} placeholder="task description" value={this.state.text} required />
+                <input id="taskTextInput" type="text" onChange={this.textUpdate} placeholder="task description" value={this.state.text} required />
                 <span>Due Date</span>
-                <input type="date" onChange={this.dateUpdate} />
+                <input id="dateInput" type="date" onChange={this.dateUpdate} />
                 <button onClick={this.sendToParent}> + </button>
 
             </div>
