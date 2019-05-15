@@ -66,7 +66,7 @@ export default class CreateUser extends Component {
     }
 
     postUser = (username, password) => {
-        let url = `http://${BACKEND_IP}:9090/task-tracker/users`;
+        let url = `${BACKEND_IP}/users`;
         let request = new XMLHttpRequest();
         request.open('POST', url);
         request.setRequestHeader("Content-Type", "application/json");

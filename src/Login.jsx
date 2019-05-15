@@ -41,7 +41,7 @@ export default class Login extends Component {
     }
 
     getByUsernameAndPassword = (username, password) => {
-        let url = `http://${BACKEND_IP}:9090/task-tracker/users/` + username + '/' + password + '/only';
+        let url = `${BACKEND_IP}/users/` + username + '/' + password + '/only';
         let request = new XMLHttpRequest();
         request.open('GET', url);
         request.responseType = "json";

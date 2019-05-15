@@ -23,7 +23,7 @@ export default class Task extends Component {
     }
 
     deleteTask = (backId, frontIndex) => {
-        let url = `http://${BACKEND_IP}:9090/task-tracker/task/` + backId;
+        let url = `${BACKEND_IP}/task/` + backId;
         let request = new XMLHttpRequest();
         request.open('DELETE', url);
         request.setRequestHeader("Content-Type", "application/json");
@@ -37,7 +37,7 @@ export default class Task extends Component {
     }
 
     completed = (backId, frontIndex, text, date) => {
-        let url = `http://${BACKEND_IP}:9090/task-tracker/task/` + backId;
+        let url = `${BACKEND_IP}/task/` + backId;
         let request = new XMLHttpRequest();
         request.open('PUT', url);
         request.setRequestHeader("Content-Type", "application/json");

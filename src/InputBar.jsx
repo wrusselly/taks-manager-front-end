@@ -35,7 +35,7 @@ export default class InputBar extends Component {
     }
 
     sendToParent  = () => {
-        let url = `http://${BACKEND_IP}:9090/task-tracker/task`;
+        let url = `${BACKEND_IP}/task`;
         let request = new XMLHttpRequest();
         request.open('POST', url);
         request.setRequestHeader("Content-Type", "application/json");

@@ -36,7 +36,7 @@ export default class NavBar extends Component {
     }
 
     getFolderList = () => {
-        let url = `http://${BACKEND_IP}:9090/task-tracker/folder//` + this.props.userId;
+        let url = `${BACKEND_IP}/folder//` + this.props.userId;
         let request = new XMLHttpRequest();
         request.open('GET', url);
         request.responseType = "json";
@@ -53,7 +53,7 @@ export default class NavBar extends Component {
     }
 
     postFolder = () => {
-        let url = `http://${BACKEND_IP}:9090/task-tracker/folder`;
+        let url = `${BACKEND_IP}/folder`;
         let request = new XMLHttpRequest();
         request.open('POST', url);
         request.setRequestHeader("Content-Type", "application/json");

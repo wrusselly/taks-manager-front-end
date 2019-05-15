@@ -19,7 +19,7 @@ export default class Folder extends Component {
     }
 
     deleteFolder = (backId, frontIndex) => {
-        let url = `http://${BACKEND_IP}:9090/task-tracker/folder/` + backId;
+        let url = `${BACKEND_IP}/folder/` + backId;
         let request = new XMLHttpRequest();
         request.open('DELETE', url);
         request.setRequestHeader("Content-Type", "application/json");
