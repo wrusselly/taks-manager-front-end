@@ -39,7 +39,7 @@ class App extends Component {
   }
 
   getByUserAndComplete = (userId, status) => {
-    let url = `http://${BACKEND_IP}:9090/task-tracker/task/` + userId + '/' + status;
+    let url = `${BACKEND_IP}/task/` + userId + '/' + status;
     let request = new XMLHttpRequest();
     request.open('GET', url);
     request.responseType = "json";
@@ -52,7 +52,7 @@ class App extends Component {
   }
 
   getByUserAndList = (userId, folderId, complete) => {
-    let url = `http://${BACKEND_IP}:9090/task-tracker/task/` + userId + '/' + folderId + '/' + complete;
+    let url = `${BACKEND_IP}/task/` + userId + '/' + folderId + '/' + complete;
     let request = new XMLHttpRequest();
     request.open('GET', url);
     request.responseType = "json";
