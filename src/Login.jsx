@@ -17,7 +17,7 @@ export default class Login extends Component {
     render() {
         let loginPage =
             <div>
-                <h1 className="header">2nd auto- deployed Project</h1>
+                <h1 className="header">Jenkins set this up</h1>
                 <div className="centre inputs">
                     <input className="centre" type="text" onChange={this.usernameUpdate} placeholder="username" value={this.state.username} required />
                     <input className="centre" type="password" onChange={this.passwordUpdate} placeholder="password" value={this.state.password} required />
